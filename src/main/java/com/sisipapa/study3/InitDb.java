@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class InitDb {
 
