@@ -10,16 +10,20 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Member02 {
+public class Member03 {
 
-    public Member02(String name){
+    public Member03(String name){
         this.name = name;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "member02_id")
+    @Column(name = "member03_id")
     private Long id;
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team03_id")
+    private Team03 team03;
 
 }

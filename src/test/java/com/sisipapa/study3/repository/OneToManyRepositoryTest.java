@@ -25,4 +25,9 @@ class OneToManyRepositoryTest {
     public void joinColumn(){
         repository.joinColumn();
     }
+
+    @Test
+    public void twoWay(){
+        repository.twoWay();
+    }
 }
