@@ -10,9 +10,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Member01 {
+public class Member02 {
 
-    public Member01(String name){
+    public Member02(String name){
         this.name = name;
     }
 

@@ -1,12 +1,10 @@
 package com.sisipapa.study3.repository;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.sisipapa.study3.domain.otm.Member01;
-import com.sisipapa.study3.domain.otm.QMember01;
-import com.sisipapa.study3.domain.otm.QTeam01;
+import com.sisipapa.study3.domain.otm.Member02;
 import com.sisipapa.study3.domain.otm.Team01;
+import com.sisipapa.study3.domain.otm.Team02;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,21 +14,33 @@ import javax.persistence.EntityManager;
 @AllArgsConstructor
 public class OneToManyRepository {
 
-    private final JPAQueryFactory queryFactory;
-
     private EntityManager em;
 
+    /**
+     * @JoinTable을 사용한 단방향 연관관계
+     */
     @Transactional
-    public void team01AndMember01Save() {
-        Member01 member = new Member01();
-        member.setName("Member1");
-        em.persist(member);
-        System.out.println("### Member Save Complete");
+    public void joinTable() {
+        Team01 team = new Team01("team01");
 
-        Team01 team = new Team01();
-        team.setName("Team1");
-        team.getMembers().add(member);
+        team.addMember(new Member01("member01"));
+        team.addMember(new Member01("member02"));
+        team.addMember(new Member01("member03"));
+        team.addMember(new Member01("member04"));
+
         em.persist(team);
-        System.out.println("### Team Save Complete");
     }
+
+    @Transactional
+    public void joinColumn() {
+        Team02 team = new Team02("team01");
+
+        team.addMember(new Member02("member01"));
+        team.addMember(new Member02("member02"));
+        team.addMember(new Member02("member03"));
+        team.addMember(new Member02("member04"));
+
+        em.persist(team);
+    }
+
 }
