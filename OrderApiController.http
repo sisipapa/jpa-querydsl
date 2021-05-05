@@ -1,0 +1,4 @@
+GET http://localhost:8080/api/v3.1/orders
+Accept: application/json
+
+###

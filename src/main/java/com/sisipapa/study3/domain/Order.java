@@ -23,6 +23,8 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member; // 주문 회원
 
+    private String orderName;   // 검색을 위한 필드 추가
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery; // 배송정보
